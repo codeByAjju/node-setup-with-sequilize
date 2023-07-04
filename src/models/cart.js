@@ -2,12 +2,10 @@ module.exports = (sequelize, DataTypes) => {
     const Cart = sequelize.define("cart", {
         userId: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            unique:true
         },
-        productId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
+      
         createdAt: {
             type: DataTypes.DATE,
             defaultValue: new Date()
@@ -26,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         Cart.belongsToMany(models.product, {
           through: models.cartitem,
           foreignKey: "cartId",
+        //   unique: true,
         });
     }
     return Cart;
