@@ -20,4 +20,6 @@ router.post('/admin/reset-password',adminController.resetPassword);
 
 router.post('/admin/update-profile',adminController.updateProfile);
 
+router.get("/admin/dashboard",adminController.getDashboardData)
+
 export default router;

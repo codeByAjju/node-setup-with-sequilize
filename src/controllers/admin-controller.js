@@ -44,10 +44,10 @@ export default {
 
     async updatePassword(req, res, next) {
         try {
-            const result = await  adminRepository.updatePassword(req);
+            const result = await adminRepository.updatePassword(req);
             if (result.status)
                 return res.status(HttpStatus.OK).json(result);
-           return res.status(HttpStatus.BAD_REQUEST).json(result);
+            return res.status(HttpStatus.BAD_REQUEST).json(result);
         } catch (err) {
             console.log(err)
             next(err);
@@ -55,10 +55,10 @@ export default {
     },
     async resetPassword(req, res, next) {
         try {
-            const result = await  adminRepository.resetPassword(req);
+            const result = await adminRepository.resetPassword(req);
             if (result.status)
                 return res.status(HttpStatus.OK).json(result);
-           return res.status(HttpStatus.BAD_REQUEST).json(result);
+            return res.status(HttpStatus.BAD_REQUEST).json(result);
         } catch (err) {
             console.log(err)
             next(err);
@@ -66,14 +66,24 @@ export default {
     },
     async updateProfile(req, res, next) {
         try {
-            const result = await  adminRepository.updateProfileData(req);
+            const result = await adminRepository.updateProfileData(req);
             if (result.status)
                 return res.status(HttpStatus.OK).json(result);
-           return res.status(HttpStatus.BAD_REQUEST).json(result);
+            return res.status(HttpStatus.BAD_REQUEST).json(result);
         } catch (err) {
             console.log(err)
             next(err);
         }
     },
+    async getDashboardData(req,res,next) {
+        try {
+            const result = await adminRepository.getDashboardData();
+            if (result.status)
+                return res.status(HttpStatus.OK).json(result);
+            return res.status(HttpStatus.BAD_REQUEST).json(result);
+        } catch (err) {
+            next(err);
+        }
+    }
 }
 
