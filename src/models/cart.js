@@ -24,8 +24,10 @@ module.exports = (sequelize, DataTypes) => {
         Cart.belongsToMany(models.product, {
           through: models.cartitem,
           foreignKey: "cartId",
-        //   unique: true,
         });
+        Cart.hasMany(models.cartitem, {
+            foreignKey: "cartId"
+          });
     }
     return Cart;
 }

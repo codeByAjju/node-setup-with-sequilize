@@ -7,5 +7,11 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         }
     });
+    CartItem.associate = (models) => {
+        CartItem.belongsTo(models.product, {
+          foreignKey: "productId",
+          targetKey: "id",
+        })
+    }
     return CartItem;    
 };
