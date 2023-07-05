@@ -1,5 +1,5 @@
 import models from "../models";
-const { cart, cartitem } = models;
+const { cart, cartitem,product,productImage,media} = models;
 
 export default {
   async addToCartProduct(request) {
@@ -8,7 +8,6 @@ export default {
     try {
       let userCart = await cart.findOne({ raw: true, where: { userId: request.body.userId }, transaction: t });
       userCart = userCart ? userCart : await cart.create(request.body, { transaction: t });
-
 
       if (userCart) {
         let cartItem = await cartitem.findOne({
@@ -52,7 +51,27 @@ export default {
   async list(request) {
     try {
       const { userId } = request.body;
-      const carts = await cart.findAll({ where: { userId } });
+      const carts = await cart.findAll({ where: { userId },
+        include: [
+          {
+            model: cartitem,
+            include: [
+              {
+                model: product,
+                include: [
+                  {
+                    model: productImage,
+                    include: [
+                      {
+                        model: media,
+                      },
+                    ],
+                  },
+                ],
+              }
+            ]
+          }
+        ]});
 
       if (carts.length === 0) {
         return { message: "User does not exist", status: false };
