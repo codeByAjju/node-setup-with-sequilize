@@ -4,7 +4,7 @@ import jwt from '../services/jwt';
 import email from '../services/email';
 import httpStatus from 'http-status';
 
-const { user } = models;
+const { user, product ,category} = models;
 
 export default {
     async signIn(adminObj) {
@@ -210,6 +210,28 @@ export default {
         } catch (err) {
             console.log(err);
             return { status: false, msg: "Something went wrong" }
+        }
+    },
+    async getDashboardData() {
+        try {
+            const data = {};
+            // TOTAL USERS 
+            const customers = await user.scope('customers').findAll();
+            data.totalCustomers = customers.length > 0 ? customers.length : 0;
+            // TOTAL VENDORS 
+            const vendors = await user.scope('vendors').findAll();
+            data.totalVendors = vendors.length > 0 ? vendors.length : 0;
+            // TOTAL PRODUCtS 
+            const products = await product.findAll();
+            data.totalProducts = products.length > 0 ? products.length : 0;
+             // TOTAL CATEGORIES 
+             const categories = await category.findAll();
+             data.totalCategories = categories.length > 0 ? categories.length : 0;
+
+            return { status: true, data }
+        }
+        catch(err){
+            return {status:false,data:err};
         }
     }
 }
