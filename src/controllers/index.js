@@ -5,6 +5,7 @@ import mediaController from './media-controller.js'
 import productCotroller from './product-cotroller.js'
 import cartController from './cart-controller.js'
 import categoryController from './category-controller.js';
+import orderController from './order-controller.js';
 export default {
     userController,
     accountController,
@@ -12,5 +13,6 @@ export default {
     mediaController,
     productCotroller,
     categoryController,
-    cartController
+    cartController,
+    orderController
 }

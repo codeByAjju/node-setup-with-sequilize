@@ -50,6 +50,10 @@ module.exports = (sequelize, DataTypes) => {
         Product.hasMany(models.productImage, {
           foreignKey: 'productId'
         });
+
+        Product.belongsToMany(models.order,{
+            through: models.orderitem
+        });
       };
     
 

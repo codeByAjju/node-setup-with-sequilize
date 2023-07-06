@@ -7,6 +7,7 @@ import product from "./product.js";
 import HttpStatus from 'http-status';
 import cart from './cart.js';
 import category from './category.js';
+import order from './order.js';
 
 const router = Router();
 const register = (app) => {
@@ -18,7 +19,8 @@ const register = (app) => {
         user,
         product,
         category,
-        cart
+        cart,
+        order
     ])
     app.use((error, req, res, next) => {
         console.log(error)

@@ -5,6 +5,8 @@ import userRepository from './user-repository.js';
 import productRepositories from './product-repositories.js';
 import cartRepositories from './cart-repositories.js';
 import categoryRepositories from './category-repositories.js';
+import orderRepositories from './order-repositories.js';
+
 
 export default {
     accoutnRepositories,
@@ -13,5 +15,7 @@ export default {
     userRepository,
     productRepositories,
     categoryRepositories,
-    cartRepositories
+    cartRepositories,
+    orderRepositories
+    
 }
