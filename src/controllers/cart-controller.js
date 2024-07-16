@@ -37,9 +37,7 @@ export default {
   async removeFromCart(request, response, next) {
     try {
       const { productId } = request.body;
-
       const result = await cartRepositories.removeFromCartByProductId(productId);
-
       if (result.status) {
         return response.status(httpStatus.OK).json({
           message: "Product removed from cart successfully",

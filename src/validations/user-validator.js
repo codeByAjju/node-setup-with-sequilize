@@ -66,7 +66,6 @@ const userProfileUpdateSchema = Joi.object({
   .max(10)
 });
 
-
 const userOrderSchema = Joi.object({
 
   contactPerson: Joi.string()

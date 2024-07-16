@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         });
         Cart.hasMany(models.cartitem, {
             foreignKey: "cartId"
-          });
+          }); 
     }
     return Cart;
 }
