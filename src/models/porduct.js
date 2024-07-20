@@ -38,21 +38,8 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
     Product.associate = (models) => {
-        Product.hasMany(models.cartitem, {
-          foreignKey: 'productId'
-        });
-    
-        Product.belongsToMany(models.cart, {
-          through: models.cartitem,
-          foreignKey: 'productId'
-        });
-    
         Product.hasMany(models.productImage, {
           foreignKey: 'productId'
-        });
-
-        Product.belongsToMany(models.order,{
-            through: models.orderitem
         });
       };
     
